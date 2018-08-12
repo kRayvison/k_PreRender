@@ -43,3 +43,14 @@ def main(*args):
     #切换渲染层
     mel.eval("fixRenderLayerOutAdjustmentErrors")
     #testgit
+
+    #删除多余的渲染层
+    render_layer = cmds.listConnections("renderLayerManager.renderLayerId")
+    all_layer = cmds.ls(type='renderLayer')
+    for layer in all_layer:
+        if layer in render_layer:
+            print layer
+        else:
+            cmds.delete(layer)
+    print cmds.listConnections("renderLayerManager.renderLayerId")
+    print cmds.ls(type='renderLayer')
