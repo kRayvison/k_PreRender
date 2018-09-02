@@ -6,6 +6,8 @@ def doConfigSetup(*args):
     print (r'args[0] is %s') %args[0]
     clientInfo = args[0]
     print ("config stratr")
+    taskId = clientInfo["taskId"]
+
 
     #获取maya版本号
     SWV=clientInfo.swVer()
