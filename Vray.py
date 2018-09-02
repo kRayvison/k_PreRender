@@ -28,8 +28,9 @@ def main(*args):
             i.sys_max_threads.set(30)
             PRE_BASE.log_scene_set("sys_max_threads","30")
             
-    #设置最大内存使用
+
     for i in pm.ls(type="VRaySettingsNode"):
+        # 设置最大内存使用
         if i.hasAttr("srdml"):
             org_srdml = i.srdml.get()
             print "Your scens originalvray srdml is %s " % (org_srdml)
@@ -41,3 +42,8 @@ def main(*args):
                 else:
                     i.srdml.set(20480)
                     print "Your vray version lower than  3.10.01,set srdml to 20480MB"
+
+        #设置日志级别
+        if i.hasAttr("sys_message_level"):
+            i.sys_message_level.set(0)
+            print("%s sys_message_level.set(0)" % i)
