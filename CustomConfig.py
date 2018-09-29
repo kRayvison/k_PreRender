@@ -56,7 +56,11 @@ def doConfigSetup(*args):
     #启动指定进程
     os.system(r'start C:/AMPED/rlm.exe')
 
-
+    aaa=''
+    MAYA_SCRIPT_PATH = os.environ.get('MAYA_SCRIPT_PATH')
+    os.environ['MAYA_SCRIPT_PATH'] = (_MAYA_SCRIPT_PATH + r";" if _MAYA_SCRIPT_PATH else "") + aaa
+    _PYTHONPATH = os.environ.get('PYTHONPATH')
+    os.environ['PYTHONPATH'] = (_PYTHONPATH + r";" if _PYTHONPATH else "") + aaa
 
 def set_env(env,val):
     """添加环境变量的函数"""
