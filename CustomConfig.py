@@ -90,6 +90,27 @@ def doConfigSetup(*args):
     _PYTHONPATH = os.environ.get('PYTHONPATH')
     os.environ['PYTHONPATH'] = (_PYTHONPATH + r";" if _PYTHONPATH else "") + PYTHONPATH
 
+    #
+    hostFile = r"C:/Windows/System32/drivers/etc/hosts"
+    ip = "10.60.100.103"
+    net = "tai-isilon"
+    f= open(hostFile,'r')
+    lines = f.readlines()
+    f.close()
+    for line in lines[:]:
+        if line.strip():
+            if ip in  line.strip() or net in  line.strip() :
+                lines.remove(line)
+        else:
+            lines.remove(line)
+    lines.append("\n%s %s\n" %(ip, net))
+    print "\nhost  %s == %s\n" %(ip, net)
+    f= open(hostFile,'w')
+    for line in lines:
+        f.write(line)
+    f.close()
+
+
 def set_env(env,val):
     """添加环境变量的函数"""
     env_val = os.environ.get(env)
