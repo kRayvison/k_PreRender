@@ -2,10 +2,36 @@
 import sys
 import os
 # 文件名 RayvisionCustomConfig.py 文件夹 MAYA_HOME
+
+def doCopyInstall(*args):
+    _PLUGINS_COPY_SERVER = r"B:\custom_config\1859970\Maya2018.4"
+    _PLUGINS_COPY_LOCAL = r"D:\work\Autodesk\Maya2018.4"
+    _EXTRACTING_LOCAL = r'"C:\Program Files\Autodesk\Maya2018.4"'
+    _EXTRACTING_7Z = r"Maya2018.4.7z"
+    _EXTRACTING_TAR = r'"D:\work\Autodesk\Maya2018.4\Maya2018.4.7z"'
+    print("doCopyInstall Maya2018.4 running ... ")
+
+    print("PLUGINS_COPY_LOCAL: %s\n")
+    _PATH = os.environ.get('PATH')
+    _APP_EXTRACT_RUN_DIR = r"C:\7-Zip"
+    os.environ['PATH'] = (_PATH + r";" if _PATH else "") + _APP_EXTRACT_RUN_DIR
+    if not os.path.exists(_EXTRACTING_LOCAL):
+        os.system("md " + _EXTRACTING_LOCAL)
+
+    print("INSTALLING " + _EXTRACTING_7Z + " ...")
+    os.system("robocopy /S /NDL /NFL %s %s %s" % (_PLUGINS_COPY_SERVER, _PLUGINS_COPY_LOCAL, _EXTRACTING_7Z))
+
+    print("\nEXTRACTING:" + _EXTRACTING_TAR + " ...")
+    subprocess.call(_APP_EXTRACT_RUN_DIR + r"/7z.exe x -y -aos " + _EXTRACTING_TAR + " -o" + _EXTRACTING_LOCAL)
+
+
+
 def doConfigSetup(*args):
     print (r'args[0] is %s') %args[0]
     clientInfo = args[0]
     print ("config stratr")
+    taskId = clientInfo["taskId"]
+
 
     #获取maya版本号
     SWV=clientInfo.swVer()
@@ -56,11 +82,13 @@ def doConfigSetup(*args):
     #启动指定进程
     os.system(r'start C:/AMPED/rlm.exe')
 
-    aaa=''
+
+    #为usersetup.py 添加环境变量
+    PYTHONPATH=''
     MAYA_SCRIPT_PATH = os.environ.get('MAYA_SCRIPT_PATH')
-    os.environ['MAYA_SCRIPT_PATH'] = (_MAYA_SCRIPT_PATH + r";" if _MAYA_SCRIPT_PATH else "") + aaa
+    os.environ['MAYA_SCRIPT_PATH'] = (_MAYA_SCRIPT_PATH + r";" if _MAYA_SCRIPT_PATH else "") + PYTHONPATH
     _PYTHONPATH = os.environ.get('PYTHONPATH')
-    os.environ['PYTHONPATH'] = (_PYTHONPATH + r";" if _PYTHONPATH else "") + aaa
+    os.environ['PYTHONPATH'] = (_PYTHONPATH + r";" if _PYTHONPATH else "") + PYTHONPATH
 
 def set_env(env,val):
     """添加环境变量的函数"""

@@ -42,8 +42,10 @@ def main(*args):
         if i.hasAttr("autotx"):
             i.autotx.set(False)
 
+        #不使用存在的tx图
         if i.hasAttr("use_existing_tiled_textures"):
             i.use_existing_tiled_textures.set(False)
+            print('use_existing_tiled_textures is %s') % i.use_existing_tiled_textures.get()
 
         if i.hasAttr("textureMaxMemoryMB"):
             i.textureMaxMemoryMB.set(l=0)

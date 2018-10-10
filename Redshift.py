@@ -7,7 +7,7 @@ import maya.mel as mel
 import os, sys, re
 import time
 
-
+# 文件夹  prerender   文件名  C_PreRender
 def main(*args):
     print ("custome prerender  start ----------- ")
     info_dict = args[0]
@@ -57,8 +57,26 @@ def main(*args):
     print
     "custome prerender  end ----------- "
 
-
-
+#RS 插件配置的环境变量
+PATH=%PATH%;D:\plugins\maya\redshift\software\driver0\redshift_2.5.46\bin;C:\Program Files\Autodesk\Maya2016\bin
+REDSHIFT_COREDATAPATH = D:\plugins\maya\redshift\software\driver0\redshift_2.5.46
+REDSHIFT_PLUG_IN_PATH = D:\plugins\maya\redshift\software\driver0\redshift_2.5.46\Plugins\Maya\2016\nt-x86-64
+REDSHIFT_SCRIPT_PATH = D:\plugins\maya\redshift\software\driver0\redshift_2.5.46\Plugins\Maya\Common\scripts
+REDSHIFT_XBMLANGPATH = D:\plugins\maya\redshift\software\driver0\redshift_2.5.46\Plugins\Maya\Common\icons
+REDSHIFT_RENDER_DESC_PATH = D:\plugins\maya\redshift\software\driver0\redshift_2.5.46\Plugins\Maya\Common\rendererDesc
+REDSHIFT_CUSTOM_TEMPLATE_PATH = D:\plugins\maya\redshift\software\driver0\redshift_2.5.46\Plugins\Maya\Common\scripts\NETemplates
+REDSHIFT_MAYAEXTENSIONSPATH = %REDSHIFT_PLUG_IN_PATH%\extensions
+REDSHIFT_PROCEDURALSPATH = %REDSHIFT_COREDATAPATH%\Procedurals
+MAYA_PLUG_IN_PATH = D:\plugins\maya\redshift\software\driver0\redshift_2.5.46\Plugins\Maya\2016\nt-x86-64
+MAYA_SCRIPT_PATH = D:\plugins\maya\redshift\software\driver0\redshift_2.5.46\Plugins\Maya\Common\scripts;C:\Users\enfuzion\AppData\Local\Temp\16195662
+PYTHONPATH = D:\plugins\maya\redshift\software\driver0\redshift_2.5.46\Plugins\Maya\Common\scripts
+XBMLANGPATH = D:\plugins\maya\redshift\software\driver0\redshift_2.5.46\Plugins\Maya\Common\icons
+MAYA_RENDER_DESC_PATH = D:\plugins\maya\redshift\software\driver0\redshift_2.5.46\Plugins\Maya\Common\rendererDesc
+MAYA_CUSTOM_TEMPLATE_PATH = %REDSHIFT_CUSTOM_TEMPLATE_PATH%
+REDSHIFT_PREFSPATH = B:\plugins\maya_new\redshift\PREFS\1080.xml
+REDSHIFT_LOCALDATAPATH = D:\temp\REDSHIFT\CACHE\G0
+REDSHIFT_COMMON_ROOT = D:\plugins\maya\redshift\software\driver0\redshift_2.5.46\Plugins\Maya\Common
+LOCALAPPDATA = D:\temp\REDSHIFT\CACHE\G0
 
 
 
